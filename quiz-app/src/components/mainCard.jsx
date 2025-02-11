@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MainCard = () => (
-    <div className='Main'> 
+        <main>
             <div className='Card box'>
                 <div className='Ask-Con'>
                     <p>Text</p>
@@ -13,7 +13,7 @@ const MainCard = () => (
                     <button className='button-24' >option 3</button>
                 </div>
             </div>
-    </div>
+        </main>
 );
 
 export default MainCard;
