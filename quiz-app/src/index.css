@@ -1,12 +1,14 @@
 body, p{
-    margin: 0;
-
-    font-family: Raleway, sans-serif;
+  margin: 0;
+  font-family: Raleway, sans-serif;
 	text-align: center;
-    color: white;
-    
+  color: white;
+  background-color: #2b2929;
 }
 
+p{
+background-color: #333;
+}
 
 
 .navbar {
@@ -39,6 +41,7 @@ main{
     justify-content: center;
     align-items: center;
     background-color: #2b2929;
+    padding-bottom: 255px;
 }
 
 .Card{
@@ -48,6 +51,11 @@ main{
     border-radius: 1%;
     border: #ffffff solid;
     position: relative;
+    margin-bottom: 170px;
+}
+
+p{
+  font-size:33px ;
 }
 
 
@@ -72,12 +80,7 @@ main{
 }
 
 .Line{
-    
-    margin: 0;
-   
-
-
-
+margin: 0;
 }
 
 
@@ -123,6 +126,99 @@ main{
   table, th, td {
     border: 1px solid;
   }
+
+  .Output-Con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 8px;
+    margin: 8px;
+    gap: 8px;
+  }
+
+
+
+
+/* Responsive Anpassungen */
+@media (max-width: 1024px) {  /* Laptop */
+  .Card {
+      max-width: 800px;
+  }
+
+  .Ask-Con p {
+      font-size: 1.5rem;
+  }
+
+  
+}
+
+@media (max-width: 768px) {  /* Tablet */
+  .Card {
+      width: 80%;
+  }
+
+  main{
+    padding-bottom: 0px;
+
+  }
+
+
+  .Ask-Con{
+    width: 100%;
+  }
+
+  
+  .Option-Con{
+    width: 100%;
+  }
+
+
+  .Ask-Con p {
+      font-size: 1.3rem;
+  }
+
+  .button-24 {
+      font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {  /* Handy */
+  .Card {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0px;
+  }
+  main{
+    padding-bottom: 0px;
+
+  }
+
+  .Option-Con{
+    height:30% ;
+    
+  }
+
+  .Ask-Con{
+    height: 70%;
+  }
+  
+  .Ask-Con p {
+      font-size: 1rem;
+  }
+
+  .button-24 {
+      font-size: 0.9rem;
+  }
+
+  .navbar a{
+
+    font-size: 1.7rem;
+  }
+
+}
+
+  
 
 
   
@@ -174,6 +270,17 @@ main{
 }
 
 
+.correct {
+--c1: rgb(4, 248, 195);
+--c2: rgba(20, 245, 0, 0.932);
+}
+
+.incorrect {
+--c1: rgb(180, 99, 32);
+--c2: rgba(206, 19, 19, 0.979);
+}
+
+
 
 :root {
 	--d: 2500ms;
@@ -185,15 +292,15 @@ main{
 }
 
 
-.box {
+.box-animations {
 	font-size: 3vw;
-	margin: max(1rem, 3vw);
+	
 	border: 0.35rem solid;
 	border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
 	animation: borderRotate var(--d) linear infinite forwards;
 }
 
-.box:nth-child(2) {
+.box-animations:nth-child(2) {
 	border-image: radial-gradient(ellipse at var(--gradX) var(--gradY), var(--c1), var(--c1) 10%, var(--c2) 40%) 30;
 	animation: borderRadial var(--d) linear infinite forwards;
 }
