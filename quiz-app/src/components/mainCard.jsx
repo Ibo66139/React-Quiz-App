@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { data } from './list';
+import { shuffledData } from './list';
 
 const MainCard = () => {
     const [currentIndex, setCurrentIndex] = useState(0); // Aktueller Index der Frage
     const [isCorrect, setIsCorrect] = useState(null); // Zustand, ob die Antwort korrekt ist
     const [hasAnswered, setHasAnswered] = useState(false); // Zustand, ob eine Antwort ausgewählt wurde
 
-    const currentQuestion = data[currentIndex]; // Aktuelle Frage
+    const currentQuestion = shuffledData[currentIndex]; // Aktuelle Frage
 
     // Funktion, die prüft, ob die Antwort korrekt ist
     const handleAnswerClick = (selectedAnswerIndex) => {
@@ -20,7 +20,7 @@ const MainCard = () => {
 
     // Funktion, um zur nächsten Frage zu wechseln
     const nextQuestion = () => {
-        if (currentIndex + 1 < data.length) {
+        if (currentIndex + 1 < shuffledData.length) {
             setCurrentIndex((prevIndex) => prevIndex + 1); // Nächste Frage laden
         } else {
             // Quiz beenden, wenn alle Fragen beantwortet sind
@@ -40,34 +40,35 @@ const MainCard = () => {
 
     return (
         <main>
-            <div className={`Card box-animations ${isCorrect === true ? 'correct' : isCorrect === false ? 'incorrect' : ''}`}>
-                <div className='Ask-Con'>
-                    <p>{currentQuestion.question}</p> {/* Aktuelle Frage anzeigen */}
+            <div className='BackGround-Con'>
+                <div className={`Card box-animations ${isCorrect === true ? 'correct' : isCorrect === false ? 'incorrect' : ''}`}>
+                    <div className='Ask-Con'>
+                        <p>{currentQuestion.question}</p> {/* Aktuelle Frage anzeigen */}
+                    </div>
+                    <hr className='Line' />
+                    <div className='Option-Con'>
+                        {/* Antwort-Buttons */}
+                        {answers.map((answer, index) => (
+                            <button 
+                                key={index}
+                                className='button-24'
+                                onClick={() => handleAnswerClick(index)} // Index der Antwort übergeben
+                                disabled={hasAnswered} // Button deaktivieren, nachdem eine Antwort ausgewählt wurde
+                            >
+                                {answer}
+                            </button>
+                        ))}
+                    </div>
                 </div>
-                <hr className='Line' />
-                <div className='Option-Con'>
-                    {/* Antwort-Buttons */}
-                    {answers.map((answer, index) => (
-                        <button 
-                            key={index}
-                            className='button-24'
-                            onClick={() => handleAnswerClick(index)} // Index der Antwort übergeben
-                            disabled={hasAnswered} // Button deaktivieren, nachdem eine Antwort ausgewählt wurde
-                        >
-                            {answer}
-                        </button>
-                    ))}
-                </div>
-
                 {/* Feedback und "Nächste Frage"-Button anzeigen, wenn eine Antwort ausgewählt wurde */}
                 {hasAnswered && (
-                    <div className="Output-Con">
-                        <p className='Output'>{isCorrect ? 'Correct!' : 'Incorrect!'}</p>
-                        <button className='button-24' onClick={nextQuestion}>
-                        Next question
-                        </button>
-                    </div>
-                )}
+                        <div className="Output-Con">
+                            <p className='Output'>{isCorrect ? 'Correct!' : 'Incorrect!'}</p>
+                            <button className='button-24' onClick={nextQuestion}>
+                            Next question
+                            </button>
+                        </div>
+                    )}
             </div>
         </main>
     );

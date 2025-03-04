@@ -4,7 +4,7 @@ const Settings = () =>{
 
     return (
     <main>
-            <h1></h1>
+            <div><p>Coming Soon</p></div>
     </main>
     );
 
